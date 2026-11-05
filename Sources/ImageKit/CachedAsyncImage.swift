@@ -11,7 +11,7 @@ public struct CachedAsyncImage: View {
     public var body: some View {
         Group {
             if let image = loader.image {
-                Image(uiImage: image)
+                ImageKitPlatformImageView(image: image)
                     .resizable()
                     .scaledToFill()
             } else {

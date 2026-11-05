@@ -1,10 +1,15 @@
 import Combine
 import Foundation
+
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 @MainActor
 final class ImageLoader: ObservableObject {
-    @Published var image: UIImage?
+    @Published var image: ImageKitPlatformImage?
 
     func load(from urlString: String) {
         guard image == nil, let url = URL(string: urlString) else {
