@@ -13,7 +13,7 @@ Small async image loader for iOS built with SwiftUI and `URLSession`.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/<OWNER>/image-kit-ios.git", from: "1.0.0")
+.package(url: "https://github.com/RonaldoSwift/image-kit-ios.git", from: "1.0.0")
 ]
 ```
 
@@ -26,7 +26,7 @@ Add the `ImageKit` product to the target that uses it.
 let package = Package(
     name: "MyAppDependencies",
     dependencies: [
-        .package(url: "https://github.com/<OWNER>/image-kit-ios.git", from: "1.0.0")
+        .package(url: "https://github.com/RonaldoSwift/image-kit-ios.git", from: "1.0.0")
     ]
 )
 ```
