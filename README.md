@@ -62,6 +62,24 @@ CachedAsyncImage(url: "https://example.com/image.png")
 `CachedAsyncImage` keeps downloaded images in an in-memory cache for the lifetime of
 the process.
 
+### How `CachedAsyncImage` works
+
+The view in `Sources/ImageKit/CachedAsyncImage.swift` is a reusable SwiftUI
+component for loading a remote image:
+
+1. `url` stores the image address received by the initializer.
+2. `@StateObject` creates and retains one `ImageLoader` for the view's lifetime.
+3. While `loader.image` is `nil`, the view displays `ProgressView`.
+4. Once the image is available, `ImageKitPlatformImageView` converts the
+   platform image (`UIImage` on iOS or `NSImage` on macOS) into a SwiftUI
+   `Image`, then applies `resizable()` and `scaledToFill()`.
+5. `onAppear` starts the asynchronous load. The loader asks `ImageCache` for
+   the URL, reusing an in-memory image when available or downloading and
+   caching it when necessary.
+
+This keeps networking and caching outside the view, so `CachedAsyncImage` only
+describes the loading, success, and layout states.
+
 ## Local development
 
 Build and test the package locally:
