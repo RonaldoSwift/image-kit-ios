@@ -7,6 +7,10 @@ import UIKit
 import AppKit
 #endif
 
+/// Manages the observable loading state used by `CachedAsyncImage`.
+///
+/// The loader publishes the platform image and starts the asynchronous cache
+/// lookup or download when `load(from:)` is called.
 @MainActor
 final class ImageLoader: ObservableObject {
     @Published var image: ImageKitPlatformImage?
