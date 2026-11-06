@@ -18,6 +18,8 @@ func ImageKitPlatformImageView(image: ImageKitPlatformImage) -> Image {
 }
 #endif
 
+/// Stores downloaded platform images in memory and retrieves missing images
+/// with `URLSession`.
 actor ImageCache {
     static let shared = ImageCache()
 
